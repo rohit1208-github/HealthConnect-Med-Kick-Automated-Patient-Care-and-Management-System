@@ -1,46 +1,57 @@
-HealthConnect MedKick: Automated Patient Care and Management System
-HealthConnect MedKick is an innovative solution designed to automate various aspects of patient care and management. This README outlines the components of the system, the technology stack used, and future development plans.
+# HealthConnect MedKick: Automated Patient Care and Management System
 
-Components
-1. Nurse-Patient Audio Call Transcription
-Current Implementation:
+HealthConnect MedKick is designed to streamline patient care and management through automation, leveraging cutting-edge technologies across several components.
 
-Model Loading: Utilizes the pre-trained Wav2Vec2 processor and model from "facebook/wav2vec2-base-960h" for audio input processing and predictions.
-Audio Processing: Employs the librosa library for audio file loading and noisereduce for noise reduction to enhance input audio quality.
-Transcription: Processes audio with Wav2Vec2 to encode and decode, converting audio to text transcription.
-Future Plans:
+## Components Overview
 
-Fine-tuning Wav2Vec2 Model: Leveraging Hugging Face Transformers for custom dataset training.
-Conformer Model Architecture: Transitioning to Conformer architecture for improved transcription accuracy.
-Training and Inference: Adapting the training process for the Conformer model to enhance audio transcription capabilities.
-2. Secure Communication via BB84 Quantum Protocol
-Implementation Overview:
+### 1. Nurse-Patient Audio Call Transcription
 
-Establishes a secure communication channel using BB84 protocol for quantum encryption, ensuring the confidentiality of nurse-patient conversations and the protection of sensitive medical information.
-3. Redaction of Personal Information
-Current Implementation:
+#### What I Have Done
+- **Model Loading**: Loaded the pre-trained Wav2Vec2 processor and model from "facebook/wav2vec2-base-960h" for audio preprocessing and prediction.
+- **Audio Processing**: Utilized the `librosa` library for audio file loading and `noisereduce` library for noise reduction to enhance input audio quality.
+- **Transcription**: Processed audio through Wav2Vec2 to encode into model-suitable input values, obtaining logits converted to predicted ids using argmax, and decoded back to text.
 
-SpaCy NLP Model: Utilizes "en_core_web_md" for named entity recognition (NER) to identify and redact personal information from transcriptions.
-Future Plans:
+#### Future Plans
+- **Fine-tuning Wav2Vec2 Model**: Fine-tune on a custom dataset using Hugging Face Transformers.
+- **Conformer Model Architecture**: Implement Conformer model architecture, integrating depthwise convolution and self-attention mechanisms for enhanced transcription accuracy.
+- **Training and Inference**: Adapt training processes for the Conformer model to improve transcription accuracy and efficiency.
 
-Integrate redaction into the workflow for transcribed nurse-patient calls, applying NER for comprehensive data protection.
-4. Transcript Summary for Doctors
-Development Steps:
+### 2. Secure Communication via BB84 Quantum Protocol
 
-Utilizes the PegasusForConditionalGeneration model for summarizing transcriptions, providing concise reports for doctors.
-Future Development:
+#### Implementation Overview
+- **Secure Communication**: Establish a secure channel between the nurse and patient using the BB84 protocol, ensuring conversation confidentiality.
+- **Quantum Encryption**: Protect sensitive medical information during nurse-patient calls with quantum encryption, allowing access only to authorized parties.
 
-Plan to run and fine-tune the model on powerful systems with custom datasets for tailored summary generation.
-5. Patient Note Report Generation
-Implementation Details:
+### 3. Redaction of Personal Information
 
-Uses the AlpaCare LLM, fine-tuned on local datasets, to generate patient-specific notes including medications and precautions.
-6. Calendar Scheduling via Federated Learning
-Proposed Approach:
+#### What I Have Done
+- **Loading Spacy NLP Model**: Loaded "en_core_web_md" for named entity recognition (NER).
+- **Redacting Personal Information**: Applied SpaCy's NER to identify and redact personal information from transcriptions.
 
-Implement federated learning to dynamically generate an optimized scheduling calendar based on inputs from various hospital devices, maintaining privacy and security.
-7. Dashboard Portal for Hospital Staff and Doctors
-Development Plan:
+#### Future Plans
+- **Redaction Integration**: Integrate redaction process into workflow post-transcription, ensuring sensitive information protection.
 
-Framework: Combining Flask and Django for secure dashboard creation and user management.
-Integration: Incorporates federated learning for scheduling and provides access to patient summaries, medical records, and resources.
+### 4. Transcript Summary for Doctors
+
+#### Development Steps
+- Utilized the PegasusForConditionalGeneration model for summarizing transcriptions, providing concise reports for doctors.
+
+#### Future Development
+- Plan to fine-tune the model on powerful systems with custom datasets for tailored summary generation.
+
+### 5. Patient Note Report Generation
+
+#### Implementation Details
+- **Model Initialization**: Loaded and prepared the AlpaCare LLM, fine-tuned on local datasets, for generating patient-specific notes.
+
+### 6. Calendar Scheduling via Federated Learning
+
+#### Proposed Approach
+- Leverage inputs from various hospital devices to dynamically optimize scheduling, maintaining privacy and security through federated learning.
+
+### 7. Dashboard Portal Application Development
+
+#### Development Plan
+- Use Flask and Django for creating a secure dashboard for managing patient information and appointments.
+- Integrate with Federated Learning for dynamic scheduling.
+- Provide access to patient summaries, medical records, and relevant medical resources, ensuring data protection and privacy.
